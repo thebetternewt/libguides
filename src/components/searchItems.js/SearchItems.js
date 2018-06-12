@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import SearchItem from './SearchItem';
 
 const SearchItems = props => (
-  <ul>{props.searchResults.map(item => <SearchItem data={item} />)}</ul>
+  <ul>
+    {props.searchResults.map(item => <SearchItem key={item.id} data={item} />)}
+  </ul>
 );
 
 SearchItems.propTypes = {

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const SearchItem = props => {
   const { id, name } = props.data;
   return (
-    <li key={id}>
+    <li>
       {id}: {name}
     </li>
   );

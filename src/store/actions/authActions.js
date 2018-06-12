@@ -37,7 +37,7 @@ export const registerUser = (name, email, password) => dispatch => {
       .doCreateUserWithEmailAndPassword(email, password)
       .then(res => {
         const { uid } = res.user;
-        // Create user in Firestore
+        // Create user in Firestore db
         db.doCreateUser(uid, name, email)
           .then(() => db.doGetUser(uid))
           .then(userRef => {
