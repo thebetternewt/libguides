@@ -16,7 +16,7 @@ const SearchItem = props => {
         </Thumb>
         <Content>
           <h4>{name}</h4>
-          <p>{description}</p>
+          <p dangerouslySetInnerHTML={{ __html: description }} />
           <Button>Info</Button>
         </Content>
       </Book>

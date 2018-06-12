@@ -46,12 +46,13 @@ class GuideSearch extends Component {
       .get(
         `https://lgapi-us.libapps.com/1.1/guides?site_id=8488&key=0b8da796b00334ae3471f60e6a10e8c6&search_terms=${
           this.state.searchString
-        }&status=1&sort_by=count_hit&expand=owner`
+        }&status=1&sort_by=relevance&expand=pages`
       )
       .then(res => {
         console.log(res.data);
+        const searchResults = res.data.filter(item => item.status === '1');
         this.setState({
-          searchResults: res.data,
+          searchResults,
           loading: false
         });
       })
