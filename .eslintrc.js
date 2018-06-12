@@ -30,8 +30,9 @@ module.exports = {
     'object-curly-newline': [
       'error',
       {
-        ObjectPattern: { minProperties: 3, multiline: true }
+        ObjectPattern: { minProperties: 5, multiline: true }
       }
-    ]
+    ],
+    'function-paren-newline': 0
   }
 };
