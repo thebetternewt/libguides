@@ -1,10 +1,12 @@
 import {
+  GET_ALL_GUIDES,
   GET_GUIDES_BY_HIT_COUNT,
   GET_GUIDES_BY_UPDATED_DATE,
   GET_GUIDES_BEGIN
 } from '../actions/types';
 
 const initialState = {
+  allGuides: [],
   guidesByHitCount: [],
   guidesByUpdatedDate: [],
   loading: false
@@ -16,6 +18,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true
+      };
+    case GET_ALL_GUIDES:
+      return {
+        ...state,
+        allGuides: action.guides,
+        loading: false
       };
     case GET_GUIDES_BY_HIT_COUNT:
       return {

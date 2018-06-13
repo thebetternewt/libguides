@@ -17,8 +17,6 @@ export const getSavedGuides = () => dispatch => {
   });
 
   db.doGetSavedGuides().then(user => {
-    console.log(user.data());
-
     const { savedGuides } = user.data();
 
     if (user.data().savedGuides) {
