@@ -8,7 +8,6 @@ const Hero = styled.div`
   display: flex;
   flex-grow: 1;
   justify-content: center;
-  max-height: 600px;
   min-height: 300px;
   position: relative;
   text-align: center;

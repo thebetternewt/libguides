@@ -117,10 +117,19 @@ const Card = styled.div`
   bottom: 15px;
   left: 50vw;
   z-index: 200;
-
   padding: 70px 20px 15px;
-
   transform: translateX(-50%);
+
+  animation: slide-in-bottom forwards 400ms cubic-bezier(0, 0, 0, 1.4);
+
+  @keyframes slide-in-bottom {
+    from {
+      bottom: -100vh;
+    }
+    to {
+      bottom: 15px;
+    }
+  }
 
   h3 {
     font-weight: 300;

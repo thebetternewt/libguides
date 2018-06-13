@@ -18,7 +18,7 @@ class GuideSearch extends Component {
     selectedGuide: null
   };
 
-  // Handle input value changes
+  // Handle input value changes and init search on keystroke
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -28,6 +28,7 @@ class GuideSearch extends Component {
     this.search(this.state.searchString);
   };
 
+  // Handle displaying  card for selected guide
   handleSelectGuide = guideId => {
     let selectedGuide = null;
     if (guideId) {
