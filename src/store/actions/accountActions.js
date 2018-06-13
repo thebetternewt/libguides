@@ -1,15 +1,6 @@
 import { db } from '../../firebase';
 import { GET_SAVED_GUIDES_BEGIN, GET_SAVED_GUIDES } from './types';
 
-// Save Guide (id) to favorites
-export const saveGuide = (guideId, guideName, guideUrl) => dispatch => {
-  db.doSaveGuide(guideId, guideName, guideUrl);
-
-  console.log(`Saved guide ${guideId} to favorites`);
-
-  dispatch(getSavedGuides());
-};
-
 // Fetch all saved guide ids
 export const getSavedGuides = () => dispatch => {
   dispatch({
@@ -39,6 +30,15 @@ export const getSavedGuides = () => dispatch => {
       });
     }
   });
+};
+
+// Save Guide (id) to favorites
+export const saveGuide = (guideId, guideName, guideUrl) => dispatch => {
+  db.doSaveGuide(guideId, guideName, guideUrl);
+
+  console.log(`Saved guide ${guideId} to favorites`);
+
+  dispatch(getSavedGuides());
 };
 
 // Delete Guide (id) from favorites

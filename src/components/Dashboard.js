@@ -61,11 +61,13 @@ class Dashboard extends Component {
             <GuideLinks>{savedGuideLinks}</GuideLinks>
           )}
         </Box>
-        <Box>
-          <H3>Guide Stats</H3>
-          <Separator />
-          <Stats />
-        </Box>
+        {user.admin && (
+          <Box>
+            <H3>Guide Stats</H3>
+            <Separator />
+            <Stats />
+          </Box>
+        )}
       </ContentContainer>
     );
   }

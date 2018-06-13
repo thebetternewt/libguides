@@ -46,7 +46,8 @@ export const registerUser = (name, email, password) => dispatch => {
             const user = {
               id: userRef.id,
               name: userData.name,
-              email: userData.email
+              email: userData.email,
+              admin: userData.admin
             };
 
             dispatch({
@@ -78,7 +79,8 @@ export const loginUser = (email, password) => dispatch => {
           const user = {
             id: userRef.id,
             name: userData.name,
-            email: userData.email
+            email: userData.email,
+            admin: userData.admin
           };
 
           dispatch({
@@ -114,13 +116,14 @@ export const setCurrentUser = authUser => dispatch => {
   if (authUser) {
     db.doGetUser(authUser.uid).then(user => {
       if (user.exists) {
-        const { name, email } = user.data();
+        const { name, email, admin } = user.data();
         dispatch({
           type: SET_CURRENT_USER,
           user: {
             id: user.id,
             name,
-            email
+            email,
+            admin
           }
         });
       }
