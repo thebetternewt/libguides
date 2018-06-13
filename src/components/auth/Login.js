@@ -118,7 +118,7 @@ const TextInput = styled.input`
 
 const SubmitButton = styled.button`
   display: block;
-  background-color: #3d9991;
+  background-color: #660000;
   color: #fff;
   border: none;
   border-radius: 99px;

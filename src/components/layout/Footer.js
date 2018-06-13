@@ -8,7 +8,7 @@ const FooterWrapper = styled.div`
   display: flex;
   justify-content: center;
   max-width: 100vw;
-  padding: 20px 0;
+  padding: 10px 0;
   width: 100%;
 
   img {

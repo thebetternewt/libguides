@@ -15,7 +15,7 @@ const reducer = (state = initialState, action) => {
     case GET_SAVED_GUIDES:
       return {
         ...state,
-        savedGuides: action.savedGuides,
+        savedGuides: action.savedGuides || [],
         loading: false
       };
     default:

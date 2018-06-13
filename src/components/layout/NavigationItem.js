@@ -12,7 +12,7 @@ const NavigationItem = props => (
 
 NavigationItem.propTypes = {
   link: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 export default NavigationItem;
@@ -37,7 +37,8 @@ const NavigationLink = styled(NavLink)`
   width: 100%;
 
   &:after {
-    background-color: #43a7ff;
+    /* background-color: #43a7ff; */
+    background-color: #660000;
     bottom: 50%;
     left: 0;
     height: 0;
@@ -62,7 +63,7 @@ const NavigationLink = styled(NavLink)`
     width: auto;
 
     &:after {
-      background-color: #43a7ff;
+      /* background-color: #43a7ff; */
       bottom: 0;
       content: '';
       display: block;
@@ -74,7 +75,7 @@ const NavigationLink = styled(NavLink)`
       width: 0;
     }
     &.active {
-      background-color: transparent;
+      background-color: rgba(255, 255, 255, 0.3);
       &:after {
         height: 5px;
         width: 100%;

@@ -10,9 +10,39 @@ import { saveGuide, deleteSavedGuide } from '../store/actions/accountActions';
 import { Separator } from './UI/elements';
 
 const GuideCard = props => {
-  const { guide, savedGuides } = props;
+  const { guide, savedGuides, isAuthenticated } = props;
 
   const saved = savedGuides.filter(g => g.id === guide.id).length > 0;
+
+  let favButton = (
+    <FavButton
+      data-tip="Login to save this guide"
+      data-for="favorite"
+      style={{ opacity: '0.3' }}
+    >
+      <i className="far fa-star fa-3x" />
+    </FavButton>
+  );
+
+  if (isAuthenticated) {
+    favButton = (
+      <FavButton
+        data-tip={saved ? "You've saved this guide!" : 'Save this guide!'}
+        data-for={saved ? 'unfavorite' : 'favorite'}
+        onClick={
+          saved
+            ? () => props.deleteSavedGuide(guide.id)
+            : () => props.saveGuide(guide.id, guide.name, guide.url)
+        }
+      >
+        {saved ? (
+          <i className="fas fa-star fa-3x" style={{ color: '#fff200' }} />
+        ) : (
+          <i className="far fa-star fa-3x" />
+        )}
+      </FavButton>
+    );
+  }
 
   return (
     <Fragment>
@@ -41,21 +71,7 @@ const GuideCard = props => {
             ))}
         </PageList>
 
-        <FavButton
-          data-tip={saved ? "You've saved this guide!" : 'Save this guide!'}
-          data-for={saved ? 'unfavorite' : 'favorite'}
-          onClick={
-            saved
-              ? () => props.deleteSavedGuide(guide.id)
-              : () => props.saveGuide(guide.id, guide.name, guide.url)
-          }
-        >
-          {saved ? (
-            <i className="fas fa-star fa-3x" style={{ color: '#fff200' }} />
-          ) : (
-            <i className="far fa-star fa-3x" />
-          )}
-        </FavButton>
+        {favButton}
         <ReactTooltip id="favorite" type="success" effect="solid" />
 
         <CloseButton onClick={() => props.dismiss()}>
@@ -71,11 +87,13 @@ GuideCard.propTypes = {
   dismiss: PropTypes.func.isRequired,
   saveGuide: PropTypes.func.isRequired,
   deleteSavedGuide: PropTypes.func.isRequired,
-  savedGuides: PropTypes.arrayOf(PropTypes.shape()).isRequired
+  savedGuides: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
-  savedGuides: state.account.savedGuides
+  savedGuides: state.account.savedGuides,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(
@@ -86,17 +104,17 @@ export default connect(
 // Styled Components
 
 const Card = styled.div`
-  border-radius: 5px 5px 0 0;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 75vh;
   width: 500px;
   max-width: 90vw;
   background-color: #eee;
   box-shadow: 2px 3px 12px rgba(0, 0, 0, 0.8);
   color: #111;
   position: fixed;
-  bottom: 0;
+  bottom: 15px;
   left: 50vw;
   z-index: 200;
 
@@ -128,6 +146,19 @@ const Card = styled.div`
     text-align: center;
     opacity: 0.6;
   }
+
+  @media (max-width: 800px) {
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    h4 {
+      font-size: 1.1rem;
+    }
+    p {
+      font-size: 0.7rem;
+    }
+  }
 `;
 
 const CardIcon = styled(Thumb)`
@@ -139,6 +170,11 @@ const CardIcon = styled(Thumb)`
   width: 150px;
 
   transform: translate(-50%, -50%);
+
+  @media (max-width: 800px) {
+    width: 80px;
+    height: 80px;
+  }
 `;
 
 const Backdrop = styled.div`
@@ -196,10 +232,11 @@ const PageList = styled.ul`
   list-style: none;
   padding: 0;
   overflow: scroll;
+  margin-top: 0;
 `;
 
 const PageLink = styled.button`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   display: block;
   outline: none;
   border: none;
@@ -210,4 +247,8 @@ const PageLink = styled.button`
   margin: 10px 0;
   width: 100%;
   cursor: pointer;
+
+  @media (max-width: 800px) {
+    font-size: 0.9rem;
+  }
 `;

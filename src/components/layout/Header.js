@@ -4,7 +4,28 @@ import styled from 'styled-components';
 
 import NavigationItems from './NavigationItems';
 
-const Header = styled.div`
+const Header = props => (
+  <HeaderWrapper>
+    <Container>
+      <Link to="/">
+        <Brand>
+          <i className="fal fa-book fa-2x" />
+          <span>LibGuides</span>
+        </Brand>
+      </Link>
+      <nav>
+        <NavigationItems />
+      </nav>
+      <MenuButton className="menu-button" onClick={props.toggleSideDrawer}>
+        <i className="fal fa-bars fa-3x" />
+      </MenuButton>
+    </Container>
+  </HeaderWrapper>
+);
+
+export default Header;
+
+const HeaderWrapper = styled.div`
   background-color: #333;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
   display: flex;
@@ -65,25 +86,6 @@ const Brand = styled.div`
     }
   }
 `;
-
-export default props => (
-  <Header>
-    <Container>
-      <Link to="/">
-        <Brand>
-          <i className="fal fa-book fa-2x" />
-          <span>LibGuides</span>
-        </Brand>
-      </Link>
-      <nav>
-        <NavigationItems />
-      </nav>
-      <MenuButton className="menu-button" onClick={props.toggleSideDrawer}>
-        <i className="fal fa-bars fa-3x" />
-      </MenuButton>
-    </Container>
-  </Header>
-);
 
 const MenuButton = styled.button`
   background-color: transparent;

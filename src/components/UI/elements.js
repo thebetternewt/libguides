@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { COOL_WHITE, MAROON } from './colors';
 
 export const Box = styled.div`
-  background-color: ${COOL_WHITE};
+  /* background-color: ${COOL_WHITE}; */
+  background-color: #fff;
   box-shadow: 2px 3px 12px rgba(0, 0, 0, 0.2);
   margin: ${props => props.margin || '15px 0'};
   padding: ${props => props.padding || '15px'};

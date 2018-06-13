@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { validate as v } from 'validate.js';
 import ReactTooltip from 'react-tooltip';
 
-import { Box, Button, H1, H2, H3, H4, Separator } from './UI';
+import { Box, Button, H1, H3, H4, Separator } from './UI';
 
 import ContentContainer from './common/ContentContainer';
 import Spinner from './common/Spinner';
@@ -28,6 +28,7 @@ class Dashboard extends Component {
 
     const { user, savedGuides } = this.props;
     const firstName = user.name && user.name.split(' ')[0];
+
     const savedGuideLinks = savedGuides.map(guide => (
       <li key={guide.id}>
         <GuideLink href={guide.url} target="_blank">
@@ -48,8 +49,6 @@ class Dashboard extends Component {
       <ContentContainer>
         <Box>
           <H1>Welcome, {firstName}!</H1>
-          <H3>My Guides</H3>
-          <Separator />
           {v.isEmpty(savedGuideLinks) ? (
             <H4>
               You don't have any guides yet. <br />
@@ -58,7 +57,11 @@ class Dashboard extends Component {
               </Link>
             </H4>
           ) : (
-            <GuideLinks>{savedGuideLinks}</GuideLinks>
+            <div>
+              <H3>My Guides</H3>
+              <Separator />
+              <GuideLinks>{savedGuideLinks}</GuideLinks>
+            </div>
           )}
         </Box>
         {user.admin && (
@@ -102,7 +105,7 @@ const GuideLinks = styled.ul`
   list-style: none;
   padding: 0;
   overflow: scroll;
-  width: 80%;
+  width: 100%;
 
   li {
     display: flex;

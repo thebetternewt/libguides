@@ -3,6 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import validate from 'validate.js';
 
+import { H1 } from '../UI';
 import SearchItems from '../searchItems.js/SearchItems';
 import Spinner from '../common/Spinner';
 import ContentContainer from '../common/ContentContainer';
@@ -84,6 +85,7 @@ class GuideSearch extends Component {
 
     return (
       <ContentContainer>
+        <H1>Find a Guide</H1>
         <SearchInput
           type="text"
           name="searchString"
@@ -108,8 +110,8 @@ const SearchInput = styled.input`
   font-size: 1.8rem;
   width: 80%;
   padding: 15px;
-  border: 2px solid lightblue;
-  border-radius: 10px;
+  border: 3px solid #660000;
+  border-radius: 0;
   box-sizing: border-box;
   margin: 2rem auto;
 
@@ -122,5 +124,5 @@ const NoneFound = styled.h3`
   font-family: 'Montserrat', Helvetica, Arial, sans-serif;
   opacity: 0.6;
   text-transform: uppercase;
-  margin-top: 5rem;
+  margin-top: 3rem;
 `;

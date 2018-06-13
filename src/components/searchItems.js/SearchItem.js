@@ -34,7 +34,7 @@ export default SearchItem;
 const Book = styled(Box)`
   display: flex;
   margin: 10px auto;
-  align-items: center;
+  align-items: flex-start;
   cursor: pointer;
 `;
 
@@ -48,7 +48,7 @@ export const Thumb = styled.div`
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  margin-right: 15px;
+  margin: 15px 20px 0 0;
   position: relative;
   height: 80px;
   width: 80px;

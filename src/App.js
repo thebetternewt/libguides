@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
-// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
-import logo from './logo.svg';
-import './App.css';
 
 import PrivateRoute from './components/common/PrivateRoute';
 import Layout from './components/layout/Layout';
 
+import HomePage from './components/pages/HomePage';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
 import Dashboard from './components/Dashboard';
 import GuideSearch from './components/guideSearch/GuideSearch';
+
+import './App.css';
 
 // Auth
 import { setCurrentUser, logoutUser } from './store/actions/authActions';
@@ -43,12 +42,7 @@ class App extends Component {
     return (
       <div className="App">
         <Layout>
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to LibGuides</h1>
-          </header>
-
-          {/* <Route path="/" render={HomePage} /> */}
+          <Route exact path="/" component={HomePage} />
           <Switch>
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/login" component={Login} />
