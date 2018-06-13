@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
 
 import PrivateRoute from './components/common/PrivateRoute';
 import Layout from './components/layout/Layout';
@@ -41,6 +42,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Home | LibGuide Portal</title>
+          <meta
+            name="description"
+            content="A portal application for users to save access to favorite guides through the MSU Library system."
+          />
+        </Helmet>
         <Layout>
           <Route exact path="/" component={HomePage} />
           <Switch>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import validate from 'validate.js';
+import Helmet from 'react-helmet';
 
 import { H1 } from '../UI';
 import SearchItems from '../searchItems.js/SearchItems';
@@ -82,6 +83,14 @@ class GuideSearch extends Component {
 
     return (
       <ContentContainer>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Search | LibGuide Portal</title>
+          <meta
+            name="description"
+            content="Search for guides within the MSU Library system."
+          />
+        </Helmet>
         <H1>Find a Guide</H1>
         <SearchInput
           type="text"

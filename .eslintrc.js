@@ -28,6 +28,7 @@ module.exports = {
     ],
     'comma-dangle': ['error', 'never'],
     'object-curly-newline': 0,
-    'function-paren-newline': 0
+    'function-paren-newline': 0,
+    'react/no-unescaped-entities': 0
   }
 };

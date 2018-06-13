@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { validate as v } from 'validate.js';
 import ReactTooltip from 'react-tooltip';
+import Helmet from 'react-helmet';
 
 import { Box, Button, H1, H3, H4, Separator } from './UI';
 
@@ -47,6 +48,10 @@ class Dashboard extends Component {
 
     return (
       <ContentContainer>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Dashboard | LibGuide Portal</title>
+        </Helmet>
         <Box>
           <H1>Welcome, {firstName}!</H1>
           {v.isEmpty(savedGuideLinks) ? (
