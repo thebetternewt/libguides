@@ -15,7 +15,6 @@ import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
 import Dashboard from './components/Dashboard';
 import GuideSearch from './components/guideSearch/GuideSearch';
-import GuideCard from './components/GuideCard';
 
 // Auth
 import { setCurrentUser, logoutUser } from './store/actions/authActions';
