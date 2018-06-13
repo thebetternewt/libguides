@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import NavigationItems from './NavigationItems';
@@ -22,6 +23,10 @@ const Header = props => (
     </Container>
   </HeaderWrapper>
 );
+
+Header.propTypes = {
+  toggleSideDrawer: PropTypes.func.isRequired
+};
 
 export default Header;
 

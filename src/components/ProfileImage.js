@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import gravatarUrl from 'gravatar-url';
+import gravatar from 'gravatar';
 
 import userPlaceHolder from '../images/user.png';
 
@@ -20,10 +20,14 @@ const Image = styled.div`
 const ProfileImage = props => {
   let profileImageUrl = userPlaceHolder;
   if (props.user) {
-    profileImageUrl = gravatarUrl(props.user.email, {
-      size: props.size * 2,
-      default: 'retro'
-    });
+    profileImageUrl = gravatar.url(
+      props.user.email,
+      {
+        s: props.size * 2,
+        d: 'retro'
+      },
+      true
+    );
   }
 
   return <Image size={props.size} imgUrl={profileImageUrl} />;
