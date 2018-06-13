@@ -1,7 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const Hero = styled.div`
+const Hero = props => (
+  <HeroWrapper backgroundImage={props.backgroundImage}>
+    <Filter />
+    <ContentContainer>{props.children}</ContentContainer>
+  </HeroWrapper>
+);
+
+Hero.propTypes = {
+  backgroundImage: PropTypes.string.isRequired,
+  children: PropTypes.shape().isRequired
+};
+
+export default Hero;
+
+const HeroWrapper = styled.div`
   background-image: url('${props => props.backgroundImage}');
   background-position: center bottom;
   background-size: cover;
@@ -44,10 +59,3 @@ const ContentContainer = styled.div`
   width: 100%;
   z-index: 2;
 `;
-
-export default props => (
-  <Hero backgroundImage={props.backgroundImage}>
-    <Filter />
-    <ContentContainer>{props.children}</ContentContainer>
-  </Hero>
-);

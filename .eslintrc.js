@@ -27,12 +27,7 @@ module.exports = {
       { components: ['Link'], specialLink: ['to'] }
     ],
     'comma-dangle': ['error', 'never'],
-    'object-curly-newline': [
-      'error',
-      {
-        ObjectPattern: { minProperties: 5, multiline: true }
-      }
-    ],
+    'object-curly-newline': 0,
     'function-paren-newline': 0
   }
 };

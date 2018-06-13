@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import NavigationItems from './NavigationItems';
+
+const SideDrawer = props => (
+  <Fragment>
+    {props.open && <Backdrop onClick={props.toggle} />}
+    <Container open={props.open} onClick={props.toggle}>
+      <NavigationItems />
+    </Container>
+  </Fragment>
+);
+
+SideDrawer.propTypes = {
+  open: PropTypes.bool.isRequired,
+  toggle: PropTypes.func.isRequired
+};
+
+export default SideDrawer;
 
 const Container = styled.div`
   background-color: #cfcfcf;
@@ -37,14 +54,3 @@ const Backdrop = styled.div`
     display: none;
   }
 `;
-
-const SideDrawer = props => (
-  <React.Fragment>
-    {props.open && <Backdrop onClick={props.toggle} />}
-    <Container open={props.open} onClick={props.toggle}>
-      <NavigationItems />
-    </Container>
-  </React.Fragment>
-);
-
-export default SideDrawer;
