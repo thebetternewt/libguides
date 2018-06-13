@@ -35,9 +35,6 @@ export const getSavedGuides = () => dispatch => {
 // Save Guide (id) to favorites
 export const saveGuide = (guideId, guideName, guideUrl) => dispatch => {
   db.doSaveGuide(guideId, guideName, guideUrl);
-
-  console.log(`Saved guide ${guideId} to favorites`);
-
   dispatch(getSavedGuides());
 };
 
@@ -45,6 +42,4 @@ export const saveGuide = (guideId, guideName, guideUrl) => dispatch => {
 export const deleteSavedGuide = guideId => dispatch => {
   db.doDeleteGuide(guideId);
   dispatch(getSavedGuides());
-
-  console.log(`Delete guide ${guideId} from favorites`);
 };

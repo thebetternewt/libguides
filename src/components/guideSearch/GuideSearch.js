@@ -29,8 +29,6 @@ class GuideSearch extends Component {
   };
 
   handleSelectGuide = guideId => {
-    console.log(guideId);
-
     let selectedGuide = null;
     if (guideId) {
       [selectedGuide] = this.state.searchResults.filter(
@@ -50,7 +48,7 @@ class GuideSearch extends Component {
     axios
       .get(searchUrl)
       .then(res => {
-        console.log(res.data);
+        // Filter results by status = published
         const searchResults = res.data.filter(item => item.status === '1');
         this.setState({
           searchResults,
@@ -58,8 +56,6 @@ class GuideSearch extends Component {
         });
       })
       .catch(err => console.log(err));
-
-    console.log();
   };
 
   render() {
