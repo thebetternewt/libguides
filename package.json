@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "chart.js": "^2.7.2",
     "firebase": "^5.0.4",
+    "gravatar-url": "^2.0.0",
     "moment": "^2.22.2",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",

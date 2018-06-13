@@ -14,7 +14,7 @@ const NavigationItems = props => (
       <Fragment>
         <NavigationItem link="/dashboard">
           <ProfileLink>
-            <ProfileImage size="36px" />
+            <ProfileImage size={36} />
             <span>My Dashboard</span>
           </ProfileLink>
         </NavigationItem>
