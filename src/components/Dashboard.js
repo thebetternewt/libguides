@@ -10,6 +10,7 @@ import { Box, Button, H1, H2, H3, H4, Separator } from './UI';
 
 import ContentContainer from './common/ContentContainer';
 import Spinner from './common/Spinner';
+import Stats from './stats/Stats';
 import {
   getSavedGuides,
   deleteSavedGuide
@@ -59,6 +60,11 @@ class Dashboard extends Component {
           ) : (
             <GuideLinks>{savedGuideLinks}</GuideLinks>
           )}
+        </Box>
+        <Box>
+          <H3>Guide Stats</H3>
+          <Separator />
+          <Stats />
         </Box>
       </ContentContainer>
     );

@@ -42,12 +42,12 @@ class GuideSearch extends Component {
 
   // Handle search hitting libguide API with axios
   search = () => {
+    const searchUrl = `https://lgapi-us.libapps.com/1.1/guides?site_id=8488&key=0b8da796b00334ae3471f60e6a10e8c6&search_terms=${
+      this.state.searchString
+    }&status=1&sort_by=count_hit&expand=pages`;
+
     axios
-      .get(
-        `https://lgapi-us.libapps.com/1.1/guides?site_id=8488&key=0b8da796b00334ae3471f60e6a10e8c6&search_terms=${
-          this.state.searchString
-        }&status=1&sort_by=count_hit&expand=pages`
-      )
+      .get(searchUrl)
       .then(res => {
         console.log(res.data);
         const searchResults = res.data.filter(item => item.status === '1');

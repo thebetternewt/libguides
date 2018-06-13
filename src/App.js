@@ -54,13 +54,12 @@ class App extends Component {
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/logout" component={Logout} />
+            <Route path="/guides" component={GuideSearch} />
           </Switch>
+
           <Switch>
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
           </Switch>
-
-          <Route path="/guides" component={GuideSearch} />
-          <Route path="/guides/:id" component={GuideCard} />
         </Layout>
       </div>
     );
