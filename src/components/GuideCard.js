@@ -6,11 +6,13 @@ import ReactTooltip from 'react-tooltip';
 
 import { Thumb } from './searchItems.js/SearchItem';
 import bookImg from '../images/notebooks-square.jpg';
-import { saveGuide } from '../store/actions/accountActions';
+import { saveGuide, deleteSavedGuide } from '../store/actions/accountActions';
 import { Separator } from './UI/elements';
 
 const GuideCard = props => {
-  const { guide } = props;
+  const { guide, savedGuides } = props;
+
+  const saved = savedGuides.filter(g => g.id === guide.id).length > 0;
 
   return (
     <Fragment>
@@ -40,11 +42,19 @@ const GuideCard = props => {
         </PageList>
 
         <FavButton
-          data-tip="Save this guide!"
-          data-for="favorite"
-          onClick={() => props.saveGuide(guide.id, guide.name, guide.url)}
+          data-tip={saved ? "You've saved this guide!" : 'Save this guide!'}
+          data-for={saved ? 'unfavorite' : 'favorite'}
+          onClick={
+            saved
+              ? () => props.deleteSavedGuide(guide.id)
+              : () => props.saveGuide(guide.id, guide.name, guide.url)
+          }
         >
-          <i className="far fa-star fa-3x" />
+          {saved ? (
+            <i className="fas fa-star fa-3x" style={{ color: '#fff200' }} />
+          ) : (
+            <i className="far fa-star fa-3x" />
+          )}
         </FavButton>
         <ReactTooltip id="favorite" type="success" effect="solid" />
 
@@ -59,12 +69,18 @@ const GuideCard = props => {
 GuideCard.propTypes = {
   guide: PropTypes.shape().isRequired,
   dismiss: PropTypes.func.isRequired,
-  saveGuide: PropTypes.func.isRequired
+  saveGuide: PropTypes.func.isRequired,
+  deleteSavedGuide: PropTypes.func.isRequired,
+  savedGuides: PropTypes.arrayOf(PropTypes.shape()).isRequired
 };
 
+const mapStateToProps = state => ({
+  savedGuides: state.account.savedGuides
+});
+
 export default connect(
-  null,
-  { saveGuide }
+  mapStateToProps,
+  { saveGuide, deleteSavedGuide }
 )(GuideCard);
 
 // Styled Components
@@ -137,6 +153,7 @@ const Backdrop = styled.div`
 `;
 
 const FavButton = styled.button`
+  outline: none;
   display: flex;
   align-items: center;
   justify-content: center;

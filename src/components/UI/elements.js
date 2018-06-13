@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { COOL_WHITE, PRIMARY_BLUE } from './colors';
+import { COOL_WHITE, MAROON } from './colors';
 
 export const Box = styled.div`
   background-color: ${COOL_WHITE};
@@ -11,7 +11,7 @@ export const Box = styled.div`
 
 export const Button = styled.button`
   color: #fff;
-  background-color: ${PRIMARY_BLUE};
+  background-color: ${MAROON};
   box-shadow: 2px 3px 12px rgba(0, 0, 0, 0.2);
   border: none;
   border-radius: 0;
@@ -24,9 +24,9 @@ export const Button = styled.button`
   cursor: pointer;
 
   &:hover, &:active {
-    color: ${PRIMARY_BLUE};
+    color: ${MAROON};
     background-color: #fff;
-    outline 3px solid ${PRIMARY_BLUE};
+    outline 3px solid ${MAROON};
   }
 `;
 
@@ -41,8 +41,30 @@ export const Separator = styled.div`
 // TEXT
 
 export const H1 = styled.h1`
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
   font-size: 2.5rem;
   font-weight: 300;
-  margin-top: 1em;
+  margin: 2rem auto;
+  align-self: center;
+`;
+export const H2 = styled.h2`
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  margin: 1rem auto;
+  align-self: center;
+`;
+export const H3 = styled.h3`
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  font-size: 1.9rem;
+  font-weight: 300;
+  margin: 1rem auto;
+  align-self: center;
+`;
+export const H4 = styled.h4`
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin: 1rem auto;
   align-self: center;
 `;

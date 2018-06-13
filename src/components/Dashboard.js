@@ -6,11 +6,14 @@ import styled from 'styled-components';
 import { validate as v } from 'validate.js';
 import ReactTooltip from 'react-tooltip';
 
-import { Box, H1, Separator } from './UI';
+import { Box, Button, H1, H2, H3, H4, Separator } from './UI';
 
 import ContentContainer from './common/ContentContainer';
 import Spinner from './common/Spinner';
-import { getSavedGuides } from '../store/actions/accountActions';
+import {
+  getSavedGuides,
+  deleteSavedGuide
+} from '../store/actions/accountActions';
 
 class Dashboard extends Component {
   componentDidMount = () => {
@@ -29,7 +32,11 @@ class Dashboard extends Component {
         <GuideLink href={guide.url} target="_blank">
           {guide.name} <i className="fal fa-chevron-circle-right" />
         </GuideLink>
-        <DeleteButton data-tip="Delete saved guide" data-for="delete">
+        <DeleteButton
+          data-tip="Delete saved guide"
+          data-for="delete"
+          onClick={() => this.props.deleteSavedGuide(guide.id)}
+        >
           <i className="far fa-times" />
         </DeleteButton>
         <ReactTooltip id="delete" type="warning" />
@@ -40,13 +47,15 @@ class Dashboard extends Component {
       <ContentContainer>
         <Box>
           <H1>Welcome, {firstName}!</H1>
-          <h3>My Guides</h3>
+          <H3>My Guides</H3>
           <Separator />
           {v.isEmpty(savedGuideLinks) ? (
-            <h4>
-              You don't have any guides yet.{' '}
-              <Link to="/guides">Go find some!</Link>
-            </h4>
+            <H4>
+              You don't have any guides yet. <br />
+              <Link to="/guides">
+                <Button style={{ marginTop: '15px' }}>Go find some!</Button>
+              </Link>
+            </H4>
           ) : (
             <GuideLinks>{savedGuideLinks}</GuideLinks>
           )}
@@ -60,7 +69,8 @@ Dashboard.propTypes = {
   user: PropTypes.shape().isRequired,
   savedGuides: PropTypes.arrayOf(PropTypes.shape()),
   loading: PropTypes.bool.isRequired,
-  getSavedGuides: PropTypes.func.isRequired
+  getSavedGuides: PropTypes.func.isRequired,
+  deleteSavedGuide: PropTypes.func.isRequired
 };
 
 Dashboard.defaultProps = {
@@ -75,7 +85,7 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getSavedGuides }
+  { getSavedGuides, deleteSavedGuide }
 )(Dashboard);
 
 // Styled Components
@@ -92,8 +102,9 @@ const GuideLinks = styled.ul`
 `;
 
 const GuideLink = styled.a`
-  font-size: 1.5rem;
-  display: block;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
   outline: none;
   border: none;
   color: #fff;
@@ -103,6 +114,7 @@ const GuideLink = styled.a`
   margin: 10px 20px 10px 10px;
   width: 100%;
   cursor: pointer;
+  transition: all 150ms linear;
 
   &:hover,
   &:focus {
@@ -129,6 +141,7 @@ const DeleteButton = styled.button`
   width: 50px;
   margin: 10px 20px 10px 10px;
   cursor: pointer;
+  transition: all 150ms linear;
 
   &:hover,
   &:focus {

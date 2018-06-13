@@ -6,13 +6,8 @@ export const saveGuide = (guideId, guideName, guideUrl) => dispatch => {
   db.doSaveGuide(guideId, guideName, guideUrl);
 
   console.log(`Saved guide ${guideId} to favorites`);
-};
 
-// Delete Guide (id) from favorites
-export const deleteSavedGuide = guideId => {
-  db.doDeleteGuide(guideId);
-
-  console.log(`Delete guide ${guideId} from favorites`);
+  dispatch(getSavedGuides());
 };
 
 // Fetch all saved guide ids
@@ -46,4 +41,12 @@ export const getSavedGuides = () => dispatch => {
       });
     }
   });
+};
+
+// Delete Guide (id) from favorites
+export const deleteSavedGuide = guideId => dispatch => {
+  db.doDeleteGuide(guideId);
+  dispatch(getSavedGuides());
+
+  console.log(`Delete guide ${guideId} from favorites`);
 };
