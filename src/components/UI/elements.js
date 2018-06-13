@@ -30,6 +30,14 @@ export const Button = styled.button`
   }
 `;
 
+export const Separator = styled.div`
+  align-self: center;
+  background-color: #111;
+  border-radius: 3px;
+  height: 2px;
+  width: 90%;
+`;
+
 // TEXT
 
 export const H1 = styled.h1`

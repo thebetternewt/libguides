@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
 
 import { Thumb } from './searchItems.js/SearchItem';
 import bookImg from '../images/notebooks-square.jpg';
+import { saveGuide } from '../store/actions/accountActions';
+import { Separator } from './UI/elements';
 
 const GuideCard = props => {
   const { guide } = props;
 
-  // TODO: pages
-
   return (
-    <Backdrop onClick={() => props.dismiss()}>
+    <Fragment>
+      <Backdrop onClick={() => props.dismiss()} />
       <Card>
         <CardIcon>
           <img src={bookImg} alt="book icon" />
@@ -36,21 +38,36 @@ const GuideCard = props => {
               </li>
             ))}
         </PageList>
-        <FavButton data-tip="Save this guide!" data-for="favorite">
-          <i className="fas fa-star fa-3x" />
+
+        <FavButton
+          data-tip="Save this guide!"
+          data-for="favorite"
+          onClick={() => props.saveGuide(guide.id, guide.name, guide.url)}
+        >
+          <i className="far fa-star fa-3x" />
         </FavButton>
         <ReactTooltip id="favorite" type="success" effect="solid" />
+
+        <CloseButton onClick={() => props.dismiss()}>
+          <i className="fal fa-times fa-3x" />
+        </CloseButton>
       </Card>
-    </Backdrop>
+    </Fragment>
   );
 };
 
 GuideCard.propTypes = {
   guide: PropTypes.shape().isRequired,
-  dismiss: PropTypes.func.isRequired
+  dismiss: PropTypes.func.isRequired,
+  saveGuide: PropTypes.func.isRequired
 };
 
-export default GuideCard;
+export default connect(
+  null,
+  { saveGuide }
+)(GuideCard);
+
+// Styled Components
 
 const Card = styled.div`
   border-radius: 5px 5px 0 0;
@@ -60,13 +77,12 @@ const Card = styled.div`
   width: 500px;
   max-width: 90vw;
   background-color: #eee;
-  box-shadow: 2px 3px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 3px 12px rgba(0, 0, 0, 0.8);
   color: #111;
   position: fixed;
   bottom: 0;
   left: 50vw;
   z-index: 200;
-  overflow: scroll;
 
   padding: 70px 20px 15px;
 
@@ -82,11 +98,11 @@ const Card = styled.div`
   }
   h4 {
     font-weight: 300;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-family: 'Montserrat', Helvetica, Arial, sans-serif;
     text-transform: uppercase;
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
   }
   p {
     font-family: 'Raleway', Helvetica, Arial, sans-serif;
@@ -99,6 +115,7 @@ const Card = styled.div`
 `;
 
 const CardIcon = styled(Thumb)`
+  box-shadow: 3px 5px 12px rgba(0, 0, 0, 0.4);
   position: absolute;
   top: 0;
   left: 50%;
@@ -115,7 +132,7 @@ const Backdrop = styled.div`
   z-index: 100;
   left: 0;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   cursor: pointer;
 `;
 
@@ -127,8 +144,8 @@ const FavButton = styled.button`
   border-radius: 999px;
   box-shadow: 2px 3px 12px rgba(0, 0, 0, 0.2);
 
-  background-color: orange;
-  color: yellow;
+  background-color: #660000;
+  color: #fff;
   position: absolute;
   top: 10px;
   left: 10px;
@@ -138,20 +155,6 @@ const FavButton = styled.button`
   cursor: pointer;
   transition: all 200ms linear;
 
-  i {
-    display: block;
-    animation: star-spin infinite 10s linear;
-
-    @keyframes star-spin {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
-    }
-  }
-
   &:hover,
   &:focus {
     transform: scale(1.1);
@@ -159,9 +162,23 @@ const FavButton = styled.button`
   }
 `;
 
+const CloseButton = styled.button`
+  background: transparent;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 60px;
+  width: 60px;
+  cursor: pointer;
+`;
+
 const PageList = styled.ul`
+  display: block;
   list-style: none;
   padding: 0;
+  overflow: scroll;
 `;
 
 const PageLink = styled.button`
@@ -175,12 +192,5 @@ const PageLink = styled.button`
   padding: 10px;
   margin: 10px 0;
   width: 100%;
-`;
-
-const Separator = styled.div`
-  align-self: center;
-  background-color: #111;
-  border-radius: 3px;
-  height: 2px;
-  width: 90%;
+  cursor: pointer;
 `;

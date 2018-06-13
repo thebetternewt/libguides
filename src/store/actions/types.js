@@ -6,3 +6,6 @@ export const AUTH_BEGIN = 'AUTH_BEGIN';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAILED = 'AUTH_FAILED';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
+
+export const GET_SAVED_GUIDES_BEGIN = 'GET_SAVED_GUIDES_BEGIN';
+export const GET_SAVED_GUIDES = 'GET_SAVED_GUIDES';

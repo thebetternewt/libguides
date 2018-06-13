@@ -7,12 +7,13 @@ import PropTypes from 'prop-types';
 import logo from './logo.svg';
 import './App.css';
 
-// import PrivateRoute from './components/common/PrivateRoute';
+import PrivateRoute from './components/common/PrivateRoute';
 import Layout from './components/layout/Layout';
 
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
+import Dashboard from './components/Dashboard';
 import GuideSearch from './components/guideSearch/GuideSearch';
 import GuideCard from './components/GuideCard';
 
@@ -53,6 +54,9 @@ class App extends Component {
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/logout" component={Logout} />
+          </Switch>
+          <Switch>
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
           </Switch>
 
           <Route path="/guides" component={GuideSearch} />

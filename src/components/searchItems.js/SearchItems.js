@@ -22,4 +22,5 @@ export default SearchItems;
 const SearchList = styled.ul`
   list-style: none;
   padding: 0;
+  width: 100%;
 `;

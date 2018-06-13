@@ -15,7 +15,7 @@ const NavigationItems = props => (
         <NavigationItem link="/dashboard">
           <ProfileLink>
             <ProfileImage size="36px" />
-            <span>My Profile</span>
+            <span>My Dashboard</span>
           </ProfileLink>
         </NavigationItem>
         <NavigationItem link="/logout">Logout</NavigationItem>

@@ -114,9 +114,14 @@ export const setCurrentUser = authUser => dispatch => {
   if (authUser) {
     db.doGetUser(authUser.uid).then(user => {
       if (user.exists) {
+        const { name, email } = user.data();
         dispatch({
           type: SET_CURRENT_USER,
-          user: user.data()
+          user: {
+            id: user.id,
+            name,
+            email
+          }
         });
       }
     });
