@@ -39,8 +39,7 @@ ProfileImage.propTypes = {
 };
 
 ProfileImage.defaultProps = {
-  size: 200,
-  user: null
+  size: 200
 };
 
 const mapStateToProps = state => ({

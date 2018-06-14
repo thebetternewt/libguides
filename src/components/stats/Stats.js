@@ -30,7 +30,12 @@ class Stats extends Component {
     const data = [unpublished, published, privateStatus, submitForReview];
 
     // Generate rgba values for chart colors
-    const colors = ['rgba(0, 249, 0, 0.3)', 'rgba(230, 0, 0, 0.3)'];
+    const colors = [
+      'rgba(230, 0, 0, 0.3)',
+      'rgba(0, 0, 230, 0.3)',
+      'rgba(0, 249, 0, 0.3)',
+      'rgba(230, 230, 0, 0.3)'
+    ];
 
     // Define chart data and option attributes
     const publishedStatusChartData = {
