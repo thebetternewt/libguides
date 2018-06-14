@@ -1,4 +1,4 @@
-#LibGuides
+# LibGuides
 
 ## A React application that interfaces with the MSU libGuides API
 
