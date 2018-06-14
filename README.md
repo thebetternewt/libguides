@@ -12,7 +12,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - The MSU libGuide API as a data source
 - Font Awesome 5 icons
 
-###Packages used within the application:
+### Packages used within the application:
 
 - react
 - react Router v4
