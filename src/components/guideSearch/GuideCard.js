@@ -75,7 +75,7 @@ const GuideCard = props => {
         </PageList>
 
         {favButton}
-        <ReactTooltip id="favorite" type="success" effect="solid" />
+        <ReactTooltip id="favorite" type="success" />
 
         <CloseButton onClick={() => props.dismiss()}>
           <i className="fal fa-times fa-3x" />

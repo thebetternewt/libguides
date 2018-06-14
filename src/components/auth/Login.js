@@ -18,8 +18,11 @@ class Login extends Component {
   };
 
   // Add error to state
-  getDerivedStateFromProps = nextProps => {
-    this.setState({ error: nextProps.error });
+  static getDerivedStateFromProps = nextProps => ({ error: nextProps.error });
+
+  // Clear error state when component mounts
+  componentDidMount = () => {
+    this.props.clearErrors();
   };
 
   // Handle input value changes
@@ -88,7 +91,8 @@ Login.propTypes = {
   loading: PropTypes.bool.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   redirectPath: PropTypes.string.isRequired,
-  loginUser: PropTypes.func.isRequired
+  loginUser: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

@@ -9,6 +9,7 @@ import ContentContainer from '../common/ContentContainer';
 import Spinner from '../common/Spinner';
 
 import { registerUser } from '../../store/actions/authActions';
+import { clearErrors } from '../../store/actions/errorActions';
 
 class Signup extends Component {
   state = {
@@ -20,11 +21,14 @@ class Signup extends Component {
   };
 
   // Add error to state
-  getDerivedStateFromProps = (nextProps, prevState) => {
-    this.setState({ error: nextProps.error });
-  };
+  static getDerivedStateFromProps = nextProps => ({
+    error: nextProps.error
+  });
 
-  // Clear errors when unmounting
+  // Clear error state when component mounts
+  componentDidMount = () => {
+    this.props.clearErrors();
+  };
 
   // Handle input value changes
   handleChange = e => {
@@ -110,14 +114,10 @@ class Signup extends Component {
 
 Signup.propTypes = {
   loading: PropTypes.bool.isRequired,
-  error: PropTypes.shape(),
   isAuthenticated: PropTypes.bool.isRequired,
   registerUser: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired,
   redirectPath: PropTypes.string.isRequired
-};
-
-Signup.defaultProps = {
-  error: null
 };
 
 const mapStateToProps = state => ({
@@ -129,7 +129,7 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { registerUser }
+  { registerUser, clearErrors }
 )(Signup);
 
 const TextInput = styled.input`
