@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import NavigationItem from './NavigationItem';
-import ProfileImage from '../ProfileImage';
+import ProfileImage from './ProfileImage';
 
 const NavigationItems = props => (
   <Nav>

@@ -11,7 +11,7 @@ import HomePage from './components/pages/HomePage';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
-import Dashboard from './components/Dashboard';
+import Dashboard from './components/pages/Dashboard';
 import GuideSearch from './components/guideSearch/GuideSearch';
 
 import './App.css';

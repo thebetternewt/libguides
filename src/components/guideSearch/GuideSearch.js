@@ -8,7 +8,7 @@ import { H1 } from '../UI';
 import SearchItems from '../searchItems.js/SearchItems';
 import Spinner from '../common/Spinner';
 import ContentContainer from '../common/ContentContainer';
-import GuideCard from '../GuideCard';
+import GuideCard from './GuideCard';
 
 class GuideSearch extends Component {
   state = {

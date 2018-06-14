@@ -7,15 +7,15 @@ import { validate as v } from 'validate.js';
 import ReactTooltip from 'react-tooltip';
 import Helmet from 'react-helmet';
 
-import { Box, Button, H1, H3, H4, Separator } from './UI';
+import { Box, Button, H1, H3, H4, Separator } from '../UI';
 
-import ContentContainer from './common/ContentContainer';
-import Spinner from './common/Spinner';
-import Stats from './stats/Stats';
+import ContentContainer from '../common/ContentContainer';
+import Spinner from '../common/Spinner';
+import Stats from '../stats/Stats';
 import {
   getSavedGuides,
   deleteSavedGuide
-} from '../store/actions/accountActions';
+} from '../../store/actions/accountActions';
 
 class Dashboard extends Component {
   componentDidMount = () => {

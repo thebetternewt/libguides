@@ -4,10 +4,13 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
 
-import { Thumb } from './searchItems.js/SearchItem';
-import bookImg from '../images/notebooks-square.jpg';
-import { saveGuide, deleteSavedGuide } from '../store/actions/accountActions';
-import { Separator } from './UI/elements';
+import { Thumb } from '../searchItems.js/SearchItem';
+import bookImg from '../../images/notebooks-square.jpg';
+import {
+  saveGuide,
+  deleteSavedGuide
+} from '../../store/actions/accountActions';
+import { Separator } from '../UI/elements';
 
 const GuideCard = props => {
   const { guide, savedGuides, isAuthenticated } = props;

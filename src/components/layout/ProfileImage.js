@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import gravatar from 'gravatar';
 
-import userPlaceHolder from '../images/user.png';
+import userPlaceHolder from '../../images/user.png';
 
 const Image = styled.div`
   align-self: center;
