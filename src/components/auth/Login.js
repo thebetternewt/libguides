@@ -18,7 +18,7 @@ class Login extends Component {
   };
 
   // Add error to state
-  componentWillReceiveProps = nextProps => {
+  getDerivedStateFromProps = nextProps => {
     this.setState({ error: nextProps.error });
   };
 
@@ -88,8 +88,7 @@ Login.propTypes = {
   loading: PropTypes.bool.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   redirectPath: PropTypes.string.isRequired,
-  loginUser: PropTypes.func.isRequired,
-  error: PropTypes.shape().isRequired
+  loginUser: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

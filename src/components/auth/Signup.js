@@ -20,7 +20,7 @@ class Signup extends Component {
   };
 
   // Add error to state
-  componentWillReceiveProps = nextProps => {
+  getDerivedStateFromProps = (nextProps, prevState) => {
     this.setState({ error: nextProps.error });
   };
 

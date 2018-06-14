@@ -62,7 +62,7 @@ const GuideCard = props => {
           {guide.pages &&
             guide.pages.map(page => (
               <li key={page.id}>
-                <a href={page.url} target="_blank">
+                <a href={page.url} target="_blank" rel="noopener noreferrer">
                   <PageLink>
                     {page.name} <i className="fal fa-chevron-circle-right" />
                   </PageLink>

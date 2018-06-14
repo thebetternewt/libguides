@@ -37,9 +37,8 @@ export const getGuidesByUpdatedDate = () => dispatch => {
     .get(guidesUrl)
     .then(res => {
       // Sort guides by last updated date
-      let guides = res.data.sort(
-        (a, b) => new Date(a.updated) - new Date(b.updated)
-      );
+      let guides = res.data;
+      guides.sort((a, b) => Date.parse(a.updated) - Date.parse(b.updated));
 
       // Limit to 20 guides
       guides = guides.slice(0, 20);

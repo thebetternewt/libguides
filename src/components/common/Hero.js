@@ -11,7 +11,7 @@ const Hero = props => (
 
 Hero.propTypes = {
   backgroundImage: PropTypes.string.isRequired,
-  children: PropTypes.shape().isRequired
+  children: PropTypes.arrayOf(PropTypes.element).isRequired
 };
 
 export default Hero;
